@@ -529,7 +529,7 @@
 -->
 <terrain_generators>
 		<!--
-		<terrain_generator name="vanilla2" base_height="32" water_level="38">
+		<terrain_generator name="vanilla2" base_height="32" water_level="39">
 			<module name="HM" type="NoiseFromImage">
 				<property name="metersPerPixel" value="15.14"/>
 				<property name="imageFile" value="sarek.png"/>
@@ -541,7 +541,7 @@
 			<output module="BIAS"/>
 		</terrain_generator>
 		-->
-	<terrain_generator name="vanilla" base_height="32" water_level="38">
+	<terrain_generator name="vanilla" base_height="32" water_level="39">
 			<!-- Total Module Count [62] -->
 			<!--  Module Block: Main Land  [12] modules -->
 			<module name="lnd_Fn" type="FastNoise" seed_additive="1024">
@@ -575,7 +575,7 @@
 			</module>
 			<module name="lnd_Sb0" type="ScaleBiasOutput">
 				<property name="sourceModule" value="lnd_Se0"/>
-				<property name="scale" value="0.35"/>                                          <!-- changed -->
+				<property name="scale" value="0.45"/>                                          <!-- changed -->
 				<property name="bias" value="-0.1"/>
 			</module>
 			<module name="lnd_Fr1" type="Spheres" seed_additive="2">
@@ -621,7 +621,7 @@
 			</module>
 			<module name="lnd_Refiner" type="ScaleBiasOutput">
 				<property name="sourceModule" value="lnd_Se"/>
-				<property name="scale" value="0.5"/> <!-- Set scale at "1" to output 100% defined in the Moudule block -->
+				<property name="scale" value="0.65"/> <!-- Set scale at "1" to output 100% defined in the Moudule block -->
 				<property name="bias" value="0.0"/> 
 			</module>
 			
@@ -897,12 +897,12 @@
 			
 			<module name="wrld_Refiner0" type="ScaleBiasOutput">
 				<property name="sourceModule" value="wrld_Se0"/>
-				<property name="scale" value="100"/>                               <!-- changed -->
+				<property name="scale" value="140"/>                               <!-- changed -->
 				<property name="bias" value="0.04"/> 
 			</module>
 			<module name="wrld_Refiner1" type="ScaleBiasOutput">
 				<property name="sourceModule" value="wrld_Se0"/>
-				<property name="scale" value="110"/>                                <!-- changed -->
+				<property name="scale" value="130"/>                                <!-- changed -->
 				<property name="bias" value="0.04"/> 
 			</module>
 			
@@ -957,15 +957,15 @@
 			<module name="biomeOutput" type="BiomeIDMapper">
 				<property name="sourceModule" value="clampOutput"/>
 				<property name="biomemap0.Name" value="pine_forest"/>
-				<property name="biomemap0.Range" value="0.2,0.72"/>
+				<property name="biomemap0.Range" value="0.2,0.7"/>
 				<property name="biomemap1.Name" value="snow"/>
 				<property name="biomemap1.Range" value="0,0.2"/>
 				<property name="biomemap2.Name" value="wasteland"/>
-				<property name="biomemap2.Range" value="0.72,0.82"/>
+				<property name="biomemap2.Range" value="0.7,0.80"/>
 				<property name="biomemap3.Name" value="burnt_forest"/>
-				<property name="biomemap3.Range" value="0.82,0.92"/>
+				<property name="biomemap3.Range" value="0.80,0.90"/>
 				<property name="biomemap4.Name" value="desert"/>
-				<property name="biomemap4.Range" value="0.92,1.1"/>
+				<property name="biomemap4.Range" value="0.90,1.1"/>
 			</module>
 			
 			<output module="biomeOutput"/>
@@ -973,7 +973,7 @@
 		
 		<biome_generator name="vanillaMedium">
 			<module name="voronoi" type="Voronoi">
-				<property name="frequency" value="0.00045"/>          <!-- changed from .0006  LAST -->
+				<property name="frequency" value="0.00042"/>          <!-- changed from .0006  LAST -->
 				<property name="displacement" value="0.5"/>           <!-- changed from .5 -->
 			</module>
 			<module name="biasOutput" type="BiasOutput">
@@ -982,19 +982,19 @@
 			</module>
 			<!-- module name="scaleOutput" type="ScaleOutput">
 				<property name="sourceModule" value="biasOutput"/>
-				<property name="scale" value="1"/>
+				<property name="scale" value="0.9"/>
 			</module  -->
 			<module name="dithering" type="FastTurbulence">             <!-- This is edges of blobs -->
 				<property name="sourceModule" value="biasOutput"/>      <!-- changed from scaleOutput to biasOutput -->
 				<property name="frequency" value="0.25"/>				 <!-- changed from .25 -->
-				<property name="power" value="6"/>                      <!-- changed from 8 -->
-				<property name="roughness" value="4"/>		            <!-- changed from 3 -->
+				<property name="power" value="8"/>                      <!-- changed from 8 -->
+				<property name="roughness" value="5"/>		            <!-- changed from 3 -->
 			</module>
 			<module name="jiggle" type="FastTurbulence">
 				<property name="sourceModule" value="dithering"/>
 				<property name="frequency" value="0.025"/>             <!-- changed from .25 -->
-				<property name="power" value="150"/>                    <!-- changed from 50 -->
-				<property name="roughness" value="4"/>                  <!-- changed from 5  -->
+				<property name="power" value="350"/>                    <!-- changed from 50 -->
+				<property name="roughness" value="5"/>                  <!-- changed from 5  -->
 			</module>
 			<module name="clampOutput" type="ClampOutput">
 				<property name="sourceModule" value="jiggle"/>
@@ -1004,13 +1004,13 @@
 				<property name="sourceModule" value="clampOutput"/>
 				
 				<property name="biomemap0.Name" value="pine_forest"/>
-				<property name="biomemap0.Range" value="0,0.5"/>
+				<property name="biomemap0.Range" value="0,0.45"/>
 				
 				<property name="biomemap1.Name" value="desert"/>
-				<property name="biomemap1.Range" value="0.5,0.65"/>
+				<property name="biomemap1.Range" value="0.45,0.63"/>
 				
 				<property name="biomemap2.Name" value="snow"/>
-				<property name="biomemap2.Range" value="0.65,0.8"/>
+				<property name="biomemap2.Range" value="0.63,0.8"/>
 
 				<property name="biomemap3.Name" value="wasteland"/>
 				<property name="biomemap3.Range" value="0.8,0.90"/>
